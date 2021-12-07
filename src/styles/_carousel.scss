@@ -1,5 +1,41 @@
 .carousel {
-  height: 300px;
+  height: $carousel-height;
+
+  display: flex;
+  justify-content: center;
+  button {
+    width: 30%;
+    background: none;
+    opacity: 0%;
+    border: none;
+    position: absolute;
+    height: inherit;
+    transition: opacity 2s ease;
+
+    &.prev {
+      top: $navbar-heigth;
+      left: 0px;
+
+      &:hover {
+        opacity: 100%;
+        background: linear-gradient(
+          to left,
+          rgba(253, 253, 253, 0) 50%,
+          rgb(136, 136, 136) 100%
+        );
+      }
+    }
+
+    &.next {
+      top: $navbar-heigth;
+      right: 0px;
+
+      &:hover {
+        opacity: 100%;
+        background: linear-gradient(to right, #ffffff00 0%, #0000007a 100%);
+      }
+    }
+  }
 
   #main-img-carousel {
     display: block;
@@ -13,10 +49,5 @@
 
   img {
     max-height: 100%;
-  }
-
-  .arrow-container {
-    display: flex;
-    justify-content: center;
   }
 }

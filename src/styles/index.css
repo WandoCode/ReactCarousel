@@ -147,7 +147,34 @@ nav {
 }
 
 .carousel {
-  height: 300px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+}
+.carousel button {
+  width: 30%;
+  background: none;
+  opacity: 0%;
+  border: none;
+  position: absolute;
+  height: inherit;
+  transition: opacity 2s ease;
+}
+.carousel button.prev {
+  top: 55px;
+  left: 0px;
+}
+.carousel button.prev:hover {
+  opacity: 100%;
+  background: linear-gradient(to left, rgba(253, 253, 253, 0) 50%, #888888 100%);
+}
+.carousel button.next {
+  top: 55px;
+  right: 0px;
+}
+.carousel button.next:hover {
+  opacity: 100%;
+  background: linear-gradient(to right, #ffffff00 0%, #0000007a 100%);
 }
 .carousel #main-img-carousel {
   display: block;
@@ -160,8 +187,4 @@ nav {
 }
 .carousel img {
   max-height: 100%;
-}
-.carousel .arrow-container {
-  display: flex;
-  justify-content: center;
 }/*# sourceMappingURL=index.css.map */

@@ -28,12 +28,13 @@ function Carousel(props) {
 
   return (
     <div className="carousel">
+      <button className="prev" onClick={prevPicture}>
+        Prev
+      </button>
       <div className="image-container">{currentPicture}</div>
-      <div className="arrow-container">
-        <button onClick={prevPicture}>Prev</button>
-
-        <button onClick={nextPicture}>Next</button>
-      </div>
+      <button class="next" onClick={nextPicture}>
+        Next
+      </button>
     </div>
   );
 }
