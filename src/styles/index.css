@@ -144,4 +144,24 @@ nav {
   top: 0;
   left: 0;
   background-color: #cbcbdf;
+}
+
+.carousel {
+  height: 300px;
+}
+.carousel #main-img-carousel {
+  display: block;
+}
+.carousel .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.carousel img {
+  max-height: 100%;
+}
+.carousel .arrow-container {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=index.css.map */

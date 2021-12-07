@@ -1,0 +1,22 @@
+.carousel {
+  height: 300px;
+
+  #main-img-carousel {
+    display: block;
+  }
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  img {
+    max-height: 100%;
+  }
+
+  .arrow-container {
+    display: flex;
+    justify-content: center;
+  }
+}
