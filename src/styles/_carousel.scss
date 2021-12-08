@@ -1,53 +1,56 @@
 .carousel {
   height: $carousel-height;
 
+  margin-top: $margin-top-carousel;
   display: flex;
   justify-content: center;
+
   button {
     width: 30%;
-    background: none;
-    opacity: 0%;
     border: none;
     position: absolute;
     height: inherit;
-    transition: opacity 2s ease;
+    transition: opacity 0.5s ease;
 
     &.prev {
-      top: $navbar-heigth;
+      top: $navbar-heigth + $margin-top-carousel;
       left: 0px;
+      background: linear-gradient(
+        to left,
+        rgba(253, 253, 253, 0) 50%,
+        rgb(136, 136, 136) 100%
+      );
+      opacity: 0%;
 
       &:hover {
         opacity: 100%;
-        background: linear-gradient(
-          to left,
-          rgba(253, 253, 253, 0) 50%,
-          rgb(136, 136, 136) 100%
-        );
       }
     }
 
     &.next {
-      top: $navbar-heigth;
+      top: $navbar-heigth + $margin-top-carousel;
       right: 0px;
+      background: linear-gradient(
+        to right,
+        rgba(253, 253, 253, 0) 50%,
+        rgb(136, 136, 136) 100%
+      );
+      opacity: 0%;
 
       &:hover {
         opacity: 100%;
-        background: linear-gradient(to right, #ffffff00 0%, #0000007a 100%);
       }
     }
   }
 
-  #main-img-carousel {
-    display: block;
-  }
-  .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  img {
+    max-height: $carousel-height;
+    border-radius: 3px;
   }
 
-  img {
-    max-height: 100%;
+  .dot {
+    position: absolute;
+    top: $carousel-height + $margin-top-carousel + $height-dot-carousel +
+      $navbar-heigth;
   }
 }

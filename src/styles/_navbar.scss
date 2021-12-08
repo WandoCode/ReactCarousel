@@ -4,5 +4,15 @@ nav {
   height: $navbar-heigth;
   top: 0;
   left: 0;
-  background-color: $navbar-color;
+
+  padding-left: 50px;
+  background-color: $navbar-background-color;
+  color: $navbar-font-color;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  a {
+    padding: 10px 20px;
+  }
 }

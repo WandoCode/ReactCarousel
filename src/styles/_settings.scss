@@ -134,5 +134,13 @@ select {
 }
 
 .App {
-  margin-top: $navbar-heigth;
+  padding-top: $navbar-heigth;
+  background-color: $background-color-app;
+  min-height: 100vh;
+  color: $color-font-app;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
