@@ -1,0 +1,12 @@
+.pictures {
+  margin: 40px;
+  ul {
+    list-style: none;
+    li {
+      margin-top: 3px;
+      &:hover {
+        color: rgb(148, 222, 224);
+      }
+    }
+  }
+}

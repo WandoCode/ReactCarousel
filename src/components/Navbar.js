@@ -5,6 +5,7 @@ function Navbar(props) {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/pic">Pictures</Link>
+      <Link to="/add-picture">Add a picture</Link>
     </nav>
   );
 }

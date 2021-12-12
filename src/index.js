@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/index.css";
 import ShowPic from "./routes/ShowPic";
 import Pictures from "./routes/Pictures";
+import AddPictures from "./routes/AddPictures";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Route index element={<Pictures />} />
             <Route path=":id" element={<ShowPic />} />
           </Route>
+          <Route path="add-picture" element={<AddPictures />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>

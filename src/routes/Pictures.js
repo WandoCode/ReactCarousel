@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import uniqid from "uniqid";
 const datas = require("../assets/datas.json");
 
 function Pictures(props) {
@@ -8,7 +8,7 @@ function Pictures(props) {
   const createLinksTopictures = () => {
     return imagesObjectArray.map((imageimageInfos) => {
       return (
-        <li>
+        <li key={uniqid()}>
           <Link to={`/pic/${imageimageInfos.id}`}>{imageimageInfos.title}</Link>
         </li>
       );
