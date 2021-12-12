@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import uniqid from "uniqid";
+
 function Carousel(props) {
   const [actualPictNum, setActualPictNum] = useState(0);
   const [currentPicture, setCurrentPicture] = useState();
 
   // Change the ImageSlide displayed following the position in the array of image src
   useEffect(() => {
+    // If no picture, nothing to do
+    if (props.imgSrcAndId.length === 0) return;
+
     const imgUrl = props.imgSrcAndId[actualPictNum];
     setCurrentPicture(
       <ImageSlide
@@ -15,7 +19,7 @@ function Carousel(props) {
         alt={`${imgUrl.title}`}
       />
     );
-  }, [actualPictNum]);
+  }, [actualPictNum, props.imgSrcAndId]);
 
   const prevPicture = () => {
     let pictureNum = (actualPictNum - 1) % props.imgSrcAndId.length;

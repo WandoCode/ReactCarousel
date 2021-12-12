@@ -1,5 +1,6 @@
 import { useState } from "react";
 const validURLFn = require("valid-url");
+const axios = require("axios");
 
 const MAX_TITLE_LENGTH = 50;
 const MIN_TITLE_LENGTH = 1;
@@ -44,15 +45,18 @@ function AddPictureForm(props) {
 
     // Datas are valid: add them to datas.json
     if (validUrl && validTitle) {
+      // Add datas to JSON
+      axios.post("http://localhost:8080/images", {
+        url: urlFieldValue,
+        title: titleFieldValue,
+      });
+
       // Rest form display
       setShowValidationError(false);
       setUrlFieldValue("");
       setTitleFieldValue("");
       setvalidUrl(false);
       setShowValidationError(false);
-
-      // Add datas to JSON
-      console.log("add to json");
     }
     // Datas invalid: display error/help message
     else {
@@ -67,7 +71,7 @@ function AddPictureForm(props) {
         <div className="inputs">
           <label htmlFor="picture-url">URL</label>
           <input
-            type="url"
+            type="text"
             name="picture-url"
             id="picture-url"
             value={urlFieldValue}

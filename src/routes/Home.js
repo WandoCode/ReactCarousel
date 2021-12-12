@@ -1,8 +1,20 @@
 import Carousel from "../components/Carousel";
-const datas = require("../assets/datas.json");
+import { useEffect, useState } from "react";
+
+const axios = require("axios");
 
 function Home() {
-  const imgSrcAndId = datas.images;
+  const [imgSrcAndId, setImgSrcAndId] = useState([]);
+
+  useEffect(() => {
+    getDatas();
+  }, []);
+
+  const getDatas = () => {
+    axios.get("http://localhost:8080/images").then((res) => {
+      setImgSrcAndId(res.data);
+    });
+  };
 
   return (
     <div className="home">
