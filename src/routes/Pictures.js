@@ -13,6 +13,17 @@ function Pictures(props) {
     });
   };
 
+  const deletePicture = (id) => {
+    // Delete post with given id from DB
+    axios.delete(`http://localhost:8080/images/${id}`);
+
+    // Delete the same post from local variable
+    const newArray = imagesObjectArray.filter((el) => {
+      return el.id !== id;
+    });
+    setImagesObjectArray(newArray);
+  };
+
   useEffect(() => {
     getDatas();
   }, []);
@@ -21,7 +32,8 @@ function Pictures(props) {
     return imagesObjectArray.map((imageimageInfos) => {
       return (
         <li key={uniqid()}>
-          <Link to={`/pic/${imageimageInfos.id}`}>{imageimageInfos.title}</Link>
+          <Link to={`/pic/${imageimageInfos.id}`}>{imageimageInfos.title}</Link>{" "}
+          <button onClick={() => deletePicture(imageimageInfos.id)}>x</button>
         </li>
       );
     });
