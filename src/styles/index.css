@@ -135,7 +135,7 @@ select {
 
 .App {
   padding-top: 30px;
-  background-color: black;
+  background-color: #2b2b2b;
   min-height: 100vh;
   color: white;
 }
@@ -214,6 +214,34 @@ nav a {
 .pictures ul li {
   margin-top: 3px;
 }
-.pictures ul li:hover {
+.pictures ul li a:hover {
   color: #94dee0;
+}
+.pictures button {
+  background-color: rgba(255, 0, 0, 0);
+  border: none;
+  color: #4e4e55;
+  margin-left: 10px;
+  padding: 3px;
+}
+.pictures button:hover {
+  transform: scale(1.05);
+  color: white;
+}
+
+.add-picture-form {
+  width: 20%;
+  margin: 50px;
+}
+.add-picture-form .inputs {
+  display: flex;
+  flex-direction: column;
+}
+.add-picture-form .inputs label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.add-picture-form .errors {
+  font-size: 12px;
+  min-height: 14px;
 }/*# sourceMappingURL=index.css.map */

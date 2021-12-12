@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const validURLFn = require("valid-url");
 const axios = require("axios");
 
@@ -11,6 +11,7 @@ function AddPictureForm(props) {
   const [validUrl, setvalidUrl] = useState(false);
   const [validTitle, setValidTitle] = useState(false);
   const [showValidationError, setShowValidationError] = useState(false);
+  const [validationErrorMessage, setValidationErrorMessage] = useState(" ");
 
   // Check if URL is valid before saving it
   const getURLValue = (event) => {
@@ -62,9 +63,20 @@ function AddPictureForm(props) {
     else {
       setShowValidationError(true);
     }
-
     return;
   };
+
+  // Toggle validation error message
+  useEffect(() => {
+    if (showValidationError) {
+      setValidationErrorMessage(
+        <div className="errors"> Please enter a valid url and a title.</div>
+      );
+    } else {
+      setValidationErrorMessage(<div className="errors"></div>);
+    }
+  }, [showValidationError]);
+
   return (
     <div className="add-picture-form">
       <form onSubmit={submitForm}>
@@ -88,10 +100,7 @@ function AddPictureForm(props) {
             onChange={getTitleValue}
           />
         </div>
-        {showValidationError && (
-          <div className="errors"> Please enter a valid url and a title.</div>
-        )}
-
+        {validationErrorMessage}
         <input type="submit" value="Add" />
       </form>
     </div>

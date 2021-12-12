@@ -4,9 +4,20 @@
     list-style: none;
     li {
       margin-top: 3px;
-      &:hover {
+      a:hover {
         color: rgb(148, 222, 224);
       }
+    }
+  }
+  button {
+    background-color: rgba(255, 0, 0, 0);
+    border: none;
+    color: $pictures-del-button-color;
+    margin-left: 10px;
+    padding: 3px;
+    &:hover {
+      transform: scale(1.05);
+      color: $color-font-app;
     }
   }
 }

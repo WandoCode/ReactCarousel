@@ -1,0 +1,17 @@
+.add-picture-form {
+  width: 20%;
+  margin: 50px;
+  .inputs {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  }
+  .errors {
+    font-size: 12px;
+    min-height: 14px;
+  }
+}
