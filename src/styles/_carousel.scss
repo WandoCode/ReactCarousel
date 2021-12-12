@@ -52,5 +52,9 @@
     position: absolute;
     top: $carousel-height + $margin-top-carousel + $height-dot-carousel +
       $navbar-heigth;
+
+    img {
+      filter: invert(1);
+    }
   }
 }

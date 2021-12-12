@@ -200,4 +200,7 @@ nav a {
 .carousel .dot {
   position: absolute;
   top: 880px;
+}
+.carousel .dot img {
+  filter: invert(1);
 }/*# sourceMappingURL=index.css.map */

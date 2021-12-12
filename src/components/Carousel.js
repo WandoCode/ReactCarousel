@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import uniqid from "uniqid";
 function Carousel(props) {
   const [actualPictNum, setActualPictNum] = useState(0);
   const [currentPicture, setCurrentPicture] = useState();
@@ -37,7 +37,10 @@ function Carousel(props) {
       <button className="prev" onClick={prevPicture}></button>
       <div className="image-container">{currentPicture}</div>
       <button className="next" onClick={nextPicture}></button>
-      <div className="dot">OOOOOOOOO</div>
+      <DotPicturesComp
+        maxDot={props.imgSrcAndId.length}
+        currentDot={actualPictNum}
+      />
     </div>
   );
 }
@@ -48,6 +51,18 @@ const ImageSlide = ({ url, alt, id }) => {
       <img className="image-carousel" src={url} id={id} alt={alt} />
     </Link>
   );
+};
+
+const DotPicturesComp = ({ maxDot, currentDot }) => {
+  let dot = [];
+  for (let i = 0; i < maxDot; i++) {
+    if (i === currentDot) {
+      dot[i] = <img src="./images/black_dot.png" key={uniqid()} />;
+      continue;
+    }
+    dot[i] = <img src="./images/white_dot.png" key={uniqid()} />;
+  }
+  return <div className="dot">{dot}</div>;
 };
 
 export default Carousel;
