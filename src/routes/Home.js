@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Carousel imgSrcAndId={imgSrcAndId} />
+      <Carousel imgSrcAndId={imgSrcAndId} automaticSlide={true} delay={5} />
     </div>
   );
 }

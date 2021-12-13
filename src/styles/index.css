@@ -227,6 +227,7 @@ nav a {
 .pictures button:hover {
   transform: scale(1.05);
   color: white;
+  cursor: pointer;
 }
 
 .add-picture-form {

@@ -5,6 +5,26 @@ import uniqid from "uniqid";
 function Carousel(props) {
   const [actualPictNum, setActualPictNum] = useState(0);
   const [currentPicture, setCurrentPicture] = useState();
+  const [automaticSlide, setAutomaticSlide] = useState(props.automaticSlide);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    if (seconds === props.delay) {
+      nextPicture();
+    }
+  }, [seconds]);
+
+  useEffect(() => {
+    let interval = null;
+    if (automaticSlide) {
+      interval = setInterval(() => {
+        setSeconds((seconds) => seconds + 1);
+      }, 1000);
+    } else if (!automaticSlide && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [automaticSlide, seconds]);
 
   // Change the ImageSlide displayed following the position in the array of image src
   useEffect(() => {
@@ -27,12 +47,14 @@ function Carousel(props) {
       pictureNum = props.imgSrcAndId.length - 1;
     }
     setActualPictNum(pictureNum);
+    setSeconds(0);
     return;
   };
 
   const nextPicture = () => {
     const pictureNum = (actualPictNum + 1) % props.imgSrcAndId.length;
     setActualPictNum(pictureNum);
+    setSeconds(0);
     return;
   };
 
