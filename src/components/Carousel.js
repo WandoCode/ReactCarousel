@@ -8,12 +8,42 @@ function Carousel(props) {
   const [automaticSlide, setAutomaticSlide] = useState(props.automaticSlide);
   const [seconds, setSeconds] = useState(0);
 
+  // Change the ImageSlide displayed following the position in the array of image src
   useEffect(() => {
-    if (seconds === props.delay) {
-      nextPicture();
-    }
-  }, [seconds]);
+    // If no picture, nothing to do
+    if (props.imgSrcAndId.length === 0) return;
+    // Set a new picture in the carousel
+    const imgUrl = props.imgSrcAndId[actualPictNum];
+    setCurrentPicture(
+      <ImageSlide
+        url={`${imgUrl.url}`}
+        id={`${imgUrl.id}`}
+        alt={`${imgUrl.title}`}
+      />
+    );
+  }, [actualPictNum, props.imgSrcAndId]);
 
+  // Ask to show the previous picture in the carousel
+  const prevPicture = () => {
+    let pictureNum = (actualPictNum - 1) % props.imgSrcAndId.length;
+    if (pictureNum < 0) {
+      pictureNum = props.imgSrcAndId.length - 1;
+    }
+    setActualPictNum(pictureNum);
+    setSeconds(0);
+    return;
+  };
+
+  // Ask to show the next picture in the carousel
+  const nextPicture = () => {
+    const pictureNum = (actualPictNum + 1) % props.imgSrcAndId.length;
+    setActualPictNum(pictureNum);
+    setSeconds(0);
+    return;
+  };
+
+  /* AUTOMATIC SLIDING */
+  // Increment seconds every second if asked.
   useEffect(() => {
     let interval = null;
     if (automaticSlide) {
@@ -26,38 +56,20 @@ function Carousel(props) {
     return () => clearInterval(interval);
   }, [automaticSlide, seconds]);
 
-  // Change the ImageSlide displayed following the position in the array of image src
+  // Every given interval, show the next picture
   useEffect(() => {
-    // If no picture, nothing to do
-    if (props.imgSrcAndId.length === 0) return;
-
-    const imgUrl = props.imgSrcAndId[actualPictNum];
-    setCurrentPicture(
-      <ImageSlide
-        url={`${imgUrl.url}`}
-        id={`${imgUrl.id}`}
-        alt={`${imgUrl.title}`}
-      />
-    );
-  }, [actualPictNum, props.imgSrcAndId]);
-
-  const prevPicture = () => {
-    let pictureNum = (actualPictNum - 1) % props.imgSrcAndId.length;
-    if (pictureNum < 0) {
-      pictureNum = props.imgSrcAndId.length - 1;
+    let delaySlide;
+    if (props.delay >= 1) {
+      delaySlide = props.delay;
+    } else {
+      delaySlide = 5;
     }
-    setActualPictNum(pictureNum);
-    setSeconds(0);
-    return;
-  };
+    if (seconds === props.delay && automaticSlide) {
+      nextPicture();
+    }
+  }, [seconds]);
 
-  const nextPicture = () => {
-    const pictureNum = (actualPictNum + 1) % props.imgSrcAndId.length;
-    setActualPictNum(pictureNum);
-    setSeconds(0);
-    return;
-  };
-
+  /* RENDERING */
   return (
     <div className="carousel">
       <button className="prev" onClick={prevPicture}></button>
@@ -71,6 +83,7 @@ function Carousel(props) {
   );
 }
 
+/* HLEPERS */
 const ImageSlide = ({ url, alt, id }) => {
   return (
     <Link to={`pic/${id}`}>
