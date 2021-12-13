@@ -9,6 +9,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
+You must run `npm run server` to allow Carousel to load pictures.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
@@ -38,6 +39,27 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+### `npm run server`
+
+Run the local server that is used as the DB for this project. Datas can be found in datas.json.
+
+## Features
+
+### Carousel component
+
+- props.automaticSlide: boolean. If true, the slide of the Carousel change after a given delay (default: 5s)
+
+- props.delay: when automaticSlide is true, define the delay before images changes. Default is 5s. Must be greater or equal to 1s.
+
+### NewPictureForm component
+
+There are 2 global variable in the Form for validation: MAX_TITLE_LENGTH and MIN_TITLE_LENGTH.
+
+- MAX_TITLE_LENGTH: the maximal title length (=50)
+- MIN_TITLE_LENGTH: the minimal title length (=1)
+
+URL validation use 'valid-url' library, more precisely 'valid-url'.isUri() function.
 
 ## Learn More
 
